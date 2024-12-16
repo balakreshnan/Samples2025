@@ -1,4 +1,4 @@
-# Microsoft PHI 4 Managed Endpoint
+# Microsoft PHI 4 Managed Endpoint in Azure AI Foundry
 
 ## Introduction
 
