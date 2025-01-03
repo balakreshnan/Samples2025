@@ -43,9 +43,8 @@ From managing life support systems to being a friendly companion in the vastness
 
 ## Details
 
-```
 Imagine a future where astronauts and space tourists have a trusted companion to assist them in every aspect of their interstellar journey. This is not a dream but a reality waiting to be built: an intelligent, voice-enabled, multimodal system that becomes a constant companion for space travelers, offering guidance, support, and knowledge.
-```
+
 
 ### A Smart Companion for Space Living
 
