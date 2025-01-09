@@ -1,4 +1,4 @@
-# Microsoft Complaince Agent for Manufacturing
+# Manufacturing Complaince Agent using Microsoft Autogen
 
 ## Introduction
 
