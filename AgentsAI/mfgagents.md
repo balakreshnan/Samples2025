@@ -1,4 +1,4 @@
-# Manufacturing Complaince Agent using Microsoft Autogen
+# Manufacturing Complaince Agent using Microsoft Autogen - Agentic AI Architecture
 
 ## Introduction
 
