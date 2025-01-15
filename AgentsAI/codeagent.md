@@ -100,6 +100,13 @@ model_client = AzureOpenAIChatCompletionClient(model="gpt-4o",
 - Execute the code created for prediction using sklearn and print the output
 - Also save the predictions to stockspred.csv
 - Both csv file should be in the coding folder
+- First output is the code and then the output of the code execution, getting the data and save
+  
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AgentsAI/images/codeagent-2.jpg 'RagChat')
+
+- now create the machine learning code
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AgentsAI/images/codeagent-1.jpg 'RagChat')
 
 
 ```
