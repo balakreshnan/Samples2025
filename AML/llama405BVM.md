@@ -18,7 +18,7 @@
 ## Steps
 
 - First install kubernetes on the nodes - multi node setup
-- Need one master and one worker as minimum using the above GPU SKU
+- Need one master and two worker as minimum using the above GPU SKU
 
 ```
 SYSTEM INFO
