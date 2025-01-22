@@ -47,8 +47,8 @@ MODEL PROFILES
 - If Shared storage NFS is not available deployment will fail.
 - create a Persistent Volume (PV) which allowed Kubernetes to automatically create the required Persistent Volume Claim (PVC) and bind it to the PV.
 - Install GPU operator: https://github.com/NVIDIA/gpu-operator
-- Install network operators on the nodes. https://docs.nvidia.com/networking/display/kubernetes2410/nvidia+network+operator
-- Network operator is needed for CUDA to work across multiple nodes for large language models.
+- Optional (only if needed) Install network operators on the nodes. https://docs.nvidia.com/networking/display/kubernetes2410/nvidia+network+operator
+  - Network operator is needed for CUDA to work across multiple nodes for large language models.
 - Here is the documenenation for LWS in Kubernetes: https://github.com/kubernetes-sigs/lws/blob/main/docs/setup/install.md
 - Now download the NIM Llama 3.1 405B from NVIDIA NGC and install it on the nodes.
 - Here is the docker image: http://nvcr.io/nim/meta/llama-3.1-405b-instruct:1.3.0 
