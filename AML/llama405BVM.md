@@ -61,6 +61,7 @@ kubectl get pods -n min -o wide
 
 - Here is the help script to install the model: https://catalog.ngc.nvidia.com/orgs/nim/helm-charts/nim-llm/files
 - Get the Helm chart version 1.3.0 and install it on the nodes. Tested and worked.
+- Here is the documentation to deploy HELM chart: https://docs.nvidia.com/nim/large-language-models/latest/deploy-helm.html
 - After image is download and installed, test the model and make sure it is working.
 
 ```
