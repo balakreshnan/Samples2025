@@ -11,7 +11,7 @@
 - Azure subscription
 - Get A100 VM's from Azure: Standard_ND96amsr_A100_v4
 - Get NVIDIA NIM Llama 3.1 405B from NVIDIA NGC
-- Need to install kubernets on 2 nodes minimum
+- Need to install kubernets on 3 nodes minimum, one master and 2 worker nodes.
 - Check this documentation for nodes needs: https://docs.nvidia.com/nim/large-language-models/latest/support-matrix.html
 - Scroll down to Llama 3.1 405B Instruct for hardware requirements.
   
