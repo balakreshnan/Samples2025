@@ -1,4 +1,4 @@
-# Azure Machine learning inferecing with Deep Seek Llama 8B
+# Azure Machine learning inferencing with Deep Seek Llama 8B
 
 ## Introduction
 
