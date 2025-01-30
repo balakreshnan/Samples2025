@@ -246,3 +246,5 @@ Usage:
         Total tokens: 1279
         Completion tokens: 1079
 ```
+
+- Check the output and token usage.
