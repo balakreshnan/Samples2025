@@ -33,7 +33,7 @@ import base64
 from openai import AzureOpenAI  
 
 
-endpoint = os.getenv("ENDPOINT_URL", "https://genaistudio1585814938.openai.azure.com/")  
+endpoint = os.getenv("ENDPOINT_URL", "https://aifoundryname.openai.azure.com/")  
 deployment = os.getenv("DEPLOYMENT_NAME", "o3-mini")  
 subscription_key = os.getenv("AZURE_OPENAI_O3_KEY")  
 
