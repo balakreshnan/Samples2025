@@ -2053,3 +2053,11 @@ Let's list them out:
 - 3 is a prime number because its only divisors are 1 and 3.
 ```
 
+- Showing metrics in wandb ai
+- Check the GPU usage and RL iterations.
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/grpo-8.jpg 'RagChat')
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/grpo-9.jpg 'RagChat')
+
+- Done
