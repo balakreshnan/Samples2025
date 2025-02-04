@@ -2028,3 +2028,28 @@ Therefore, the answer is $\boxed{7}$.
 ```
 
 - Done
+- now using gsm8K dataset
+- Total rows: Number of rows in dataset: 7473
+- Using full GSM8K dataset
+
+- Training output metrics and logs.
+
+```
+TrainOutput(global_step=467, training_loss=0.012255377577778255, metrics={'train_runtime': 23452.9798, 'train_samples_per_second': 0.319, 'train_steps_per_second': 0.02, 'total_flos': 0.0, 'train_loss': 0.012255377577778255})
+```
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/grpo-6.jpg 'RagChat')
+
+- now lets inference and test with some questions
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/grpo-7.jpg 'RagChat')
+
+```
+Question: What is the largest single-digit prime number?
+Answer: What is the largest single-digit prime number? To determine the largest single-digit prime number, we need to identify all the single-digit prime numbers and then select the largest one. The single-digit prime numbers are 2, 3, 5, and 7.
+
+Let's list them out:
+- 2 is a prime number because its only divisors are 1 and 2.
+- 3 is a prime number because its only divisors are 1 and 3.
+```
+
