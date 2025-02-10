@@ -457,7 +457,12 @@ Run RAI Agent completed with status: RunStatus.COMPLETED
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/aifoundryraiagent-4.jpg 'RagChat')
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/aifoundryraiagent-5.jpg 'RagChat')
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/aifoundryraiagent-6.jpg 'RagChat')
+
+- Tracing output
+- Provides application lineage
+
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/aifoundryraiagent-7.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/aifoundryraiagent-8.jpg 'RagChat')
 
 - Dataset i used is custom data with groundtruth and response data
 - Responses were from GPT 4o model.
