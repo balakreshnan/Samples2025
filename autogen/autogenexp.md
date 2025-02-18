@@ -10,8 +10,8 @@
 
 - Azure Subscription
 - Python 3.12 environment
-- autogen 0.4.6
-- autogenstudio
+- autogen 0.4.7
+- autogenstudio - 0.4.1.1
 
 ## Steps
 
