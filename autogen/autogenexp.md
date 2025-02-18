@@ -216,19 +216,33 @@ if __name__ == "__main__":
         handoffs=["file_agent"],  # No handoffs for this agent
     )
 
+    save_files_to_json_tool = FunctionTool(
+        func=save_files_to_json,
+        description="Traverses all directories and files starting from the given directory and saves the list of file paths to a JSON file.",
+        name="save_files_to_json",
+        global_imports=["os", "json"]
+    )
+
     file_agent = AssistantAgent(
         name="file_agent",
         model_client=model_client,
-        tools=[save_files_to_json],  # Add the tool to the agent's list of tools
+        tools=[save_files_to_json_tool],  # Add the tool to the agent's list of tools
         handoffs=["display_agent"],  # No handoffs for this agent
         system_message=f"""Please scan the current folder and create a list of all files available. Save this list of files to a JSON file named file_list.json. 
         If there are any errors encountered while processing the files, log those errors along with the file names in a separate JSON file named failed_files.json."""
     )
 
+    parse_and_display_json_tool = FunctionTool(
+        func=save_files_to_json,
+        description="Traverses all directories and files starting from the given directory and saves the list of file paths to a JSON file.",
+        name="parse_and_display_json",
+        global_imports=["os", "json"]
+    )
+
     display_agent = AssistantAgent(
         name="display_agent",
         model_client=model_client,
-        tools=[parse_and_display_json],  # Add the tool to the agent's list of tools
+        tools=[parse_and_display_json_tool],  # Add the tool to the agent's list of tools
         handoffs=["success_agent"],  # No handoffs for this agent
         system_message=f"""Please scan the current folder and diplay the contents of file_list.json."""
     )
@@ -256,10 +270,6 @@ if __name__ == "__main__":
     text_mention_termination = TextMentionTermination("TERMINATE")
     max_messages_termination = MaxMessageTermination(max_messages=25)
     termination = text_mention_termination | max_messages_termination
-    # team = MagenticOneGroupChat([file_agent, file_surfer, success_agent], 
-    #                             termination_condition=termination, 
-    #                             max_turns=2,
-    #                             model_client=model_client)
     team = RoundRobinGroupChat([file_agent, display_agent, success_agent], 
                                 termination_condition=termination, 
                                 max_turns=1)
@@ -325,7 +335,9 @@ if __name__ == "__main__":
     #print('Response: \n' , response)
     #parse_agent_response(response)
     print("-----------------------------------------------------------------------------------------")
-    print('Agent JSON:', team.dump_component().model_dump_json())
+    #print('Agent JSON:', team.dump_component().model_dump_json())
+    serialized = team.dump_component().model_dump(mode='python')
+    print(f"Serialized team: {json.dumps(serialized)}")
     print("-----------------------------------------------------------------------------------------")
 ```
 
@@ -367,8 +379,8 @@ python autogenexp.py
                      "seed":42,
                      "temperature":0.0,
                      "model":"gpt-4o",
-                     "api_key":"xxxxxxx",
-                     "azure_endpoint":"https://xxxx.openai.azure.com",
+                     "api_key":"e5724570fa0a475da5bbfaef7dd2bcb4",
+                     "azure_endpoint":"https://aoaieu1.openai.azure.com",
                      "azure_deployment":"gpt-4o-2",
                      "api_version":"2024-10-21"
                   }
@@ -382,11 +394,12 @@ python autogenexp.py
                      "description":"Create custom tools by wrapping standard Python functions.",
                      "label":"FunctionTool",
                      "config":{
-                        "source_code":"def save_files_to_json(directory: str) -> str:\n    \"\"\"\n    Traverses all directories and files starting from the given directory\n    and saves the list of file paths to a JSON file.\n\n        Parameters:\n        directory (str): The root directory to start traversal.\n        output_file (str): The path to the output JSON file.\n    \"\"\"\n    output_file = \"file_list.json\"\n    file_list = []\n\n    success = \"success\"\n    # Traverse the directory tree\n    for dirpath, _, filenames in os.walk(directory):\n        for filename in filenames:\n            # Get the full file path\n            full_path = os.path.join(dirpath, filename)\n            try:\n                # Add file name and status to the list\n                file_list.append({\"file_name\": filename, \"status\": success})\n            except Exception as e:\n        # If an error occurs, log it with a failed status\n                file_list.append({'file_name': filename, 'status': f'failed - {str(e)}'})\n\n    # Save the list of files with their statuses to a JSON file\n    with open(output_file, 'w') as json_file:\n        json.dump(file_list, json_file, indent=4)\n\n    print(f\"File list saved to {output_file}\")\n",
+                        "source_code":"def save_files_to_json(directory: str) -> str:\n    \"\"\"\n    Traverses all directories and files starting from the given directory\n    and saves the list of file paths to a JSON file.\n\n        Parameters:\n        directory (str): The root directory to start traversal.\n        output_file (str): The path to the output JSON file.\n    \"\"\"\n    output_file = \"file_list.json\"\n    file_list = []\n\n    success = \"success\"\n    # Traverse the directory tree\n    for dirpath, _, filenames in os.walk(directory):\n        for filename in filenames:\n            # Get the full file path\n            full_path = os.path.join(dirpath, filename)\n            try:\n                # Add file name and status to the list\n                file_list.append({\"file_name\": filename, \"status\": success})\n            except Exception as e:\n                # If an error occurs, log it with a failed status\n          file_list.append({'file_name': filename, 'status': f'failed - {str(e)}'})\n\n    # Save the list of files with their statuses to a JSON file\n    with open(output_file, 'w') as json_file:\n        json.dump(file_list, json_file, indent=4)\n\n    print(f\"File list saved to {output_file}\")\n",
                         "name":"save_files_to_json",
-                        "description":"\nTraverses all directories and files starting from the given directory\nand saves the list of file paths to a JSON file.\n\n    Parameters:\n    directory (str): The root directory to start traversal.\n    output_file (str): The path to the output JSON file.\n",
+                        "description":"Traverses all directories and files starting from the given directory and saves the list of file paths to a JSON file.",
                         "global_imports":[
-                           
+                           "os",
+                           "json"
                         ],
                         "has_cancellation_support":false
                      }
@@ -438,8 +451,8 @@ python autogenexp.py
                      "seed":42,
                      "temperature":0.0,
                      "model":"gpt-4o",
-                     "api_key":"xxxxxxx",
-                     "azure_endpoint":"https://xxxxx.openai.azure.com",
+                     "api_key":"e5724570fa0a475da5bbfaef7dd2bcb4",
+                     "azure_endpoint":"https://aoaieu1.openai.azure.com",
                      "azure_deployment":"gpt-4o-2",
                      "api_version":"2024-10-21"
                   }
@@ -453,11 +466,12 @@ python autogenexp.py
                      "description":"Create custom tools by wrapping standard Python functions.",
                      "label":"FunctionTool",
                      "config":{
-                        "source_code":"def parse_and_display_json(file_name: str) -> str:\n    \"\"\"\n    Parses a JSON file and displays its contents in a readable format.\n\n    Parameters:\n    file_name (str): The name of the JSON file to parse.\n\n    Returns:\n    None\n    \"\"\"\n    try:\n        # Open and load the JSON file\n        with open(file_name, 'r') as json_file:\n            data = json.load(json_file)\n\n        # Display the parsed data\n        print(\"Parsed JSON Content:\")\n        for entry in data:\n            print(f\"File Name: {entry.get('file_name')}, Status: {entry.get('status')}\")\n\n    except FileNotFoundError:\n        print(f\"Error: The file '{file_name}' was not found.\")\n    except json.JSONDecodeError:\n        print(f\"Error: The file '{file_name}' is not a valid JSON file.\")\n    except Exception as e:\n        print(f\"An unexpected error occurred: {e}\")\n",
+                        "source_code":"def save_files_to_json(directory: str) -> str:\n    \"\"\"\n    Traverses all directories and files starting from the given directory\n    and saves the list of file paths to a JSON file.\n\n        Parameters:\n        directory (str): The root directory to start traversal.\n        output_file (str): The path to the output JSON file.\n    \"\"\"\n    output_file = \"file_list.json\"\n    file_list = []\n\n    success = \"success\"\n    # Traverse the directory tree\n    for dirpath, _, filenames in os.walk(directory):\n        for filename in filenames:\n            # Get the full file path\n            full_path = os.path.join(dirpath, filename)\n            try:\n                # Add file name and status to the list\n                file_list.append({\"file_name\": filename, \"status\": success})\n            except Exception as e:\n                # If an error occurs, log it with a failed status\n                file_list.append({'file_name': filename, 'status': f'failed - {str(e)}'})\n\n    # Save the list of files with their statuses to a JSON file\n    with open(output_file, 'w') as json_file:\n        json.dump(file_list, json_file, indent=4)\n\n    print(f\"File list saved to {output_file}\")\n",
                         "name":"parse_and_display_json",
-                        "description":"\nParses a JSON file and displays its contents in a readable format.\n\nParameters:\nfile_name (str): The name of the JSON file to parse.\n\nReturns:\nNone\n",
+                        "description":"Traverses all directories and files starting from the given directory and saves the list of file paths to a JSON file.",
                         "global_imports":[
-                           
+                           "os",
+                           "json"
                         ],
                         "has_cancellation_support":false
                      }
@@ -509,8 +523,8 @@ python autogenexp.py
                      "seed":42,
                      "temperature":0.0,
                      "model":"gpt-4o",
-                     "api_key":"xxxxxxx",
-                     "azure_endpoint":"https://xxxxxxx.openai.azure.com",
+                     "api_key":"e5724570fa0a475da5bbfaef7dd2bcb4",
+                     "azure_endpoint":"https://aoaieu1.openai.azure.com",
                      "azure_deployment":"gpt-4o-2",
                      "api_version":"2024-10-21"
                   }
