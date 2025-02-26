@@ -123,4 +123,6 @@ Here's a summary of the latest AI news from VentureBeat:
 These stories highlight a wide range of AI advancements and challenges, from security and infrastructure to entertainment and development tools. 
 ```
 
+![info](https://github.com/balakreshnan/Samples2025/blob/main/autogen/images/multimodalwebsurfer-1.jpg 'RagChat')
+
 - Try different questions.
