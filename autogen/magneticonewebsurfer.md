@@ -80,7 +80,13 @@ async def main() -> None:
         downloads_folder="./downs",
         debug_dir="./debug",
         headless = False,
+        to_resize_viewport=True,
+        description="A web surfing assistant that can browse and interact with web pages.",
+        start_page="https://www.bing.com",  # Optional: Initial page
+        animate_actions=True,
+        browser_data_dir="./browser_data",
     )
+    
     team = MagenticOneGroupChat([surfer], model_client=model_client, max_turns=3)
     # Define a team
     # team = RoundRobinGroupChat([surfer], max_turns=3)
