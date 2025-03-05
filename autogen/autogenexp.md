@@ -379,8 +379,8 @@ python autogenexp.py
                      "seed":42,
                      "temperature":0.0,
                      "model":"gpt-4o",
-                     "api_key":"e5724570fa0a475da5bbfaef7dd2bcb4",
-                     "azure_endpoint":"https://aoaieu1.openai.azure.com",
+                     "api_key":"xxxxxxxx",
+                     "azure_endpoint":"https://aoainame.openai.azure.com",
                      "azure_deployment":"gpt-4o-2",
                      "api_version":"2024-10-21"
                   }
@@ -451,8 +451,8 @@ python autogenexp.py
                      "seed":42,
                      "temperature":0.0,
                      "model":"gpt-4o",
-                     "api_key":"e5724570fa0a475da5bbfaef7dd2bcb4",
-                     "azure_endpoint":"https://aoaieu1.openai.azure.com",
+                     "api_key":"xxxxxxxxxxxxxxxxx",
+                     "azure_endpoint":"https://aoainame.openai.azure.com",
                      "azure_deployment":"gpt-4o-2",
                      "api_version":"2024-10-21"
                   }
@@ -523,8 +523,8 @@ python autogenexp.py
                      "seed":42,
                      "temperature":0.0,
                      "model":"gpt-4o",
-                     "api_key":"e5724570fa0a475da5bbfaef7dd2bcb4",
-                     "azure_endpoint":"https://aoaieu1.openai.azure.com",
+                     "api_key":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                     "azure_endpoint":"https://aoainame.openai.azure.com",
                      "azure_deployment":"gpt-4o-2",
                      "api_version":"2024-10-21"
                   }
