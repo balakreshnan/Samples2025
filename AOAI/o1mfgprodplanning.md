@@ -1,4 +1,4 @@
-# ReImaging the Future of Manufacturing Production Planning
+# ReImaging the Future of Manufacturing Production Planning - o1-preview
 
 ## Introduction
 
@@ -10,6 +10,7 @@
 - Generative AI will help businesses reduce costs and increase profitability.
 - We are using simulated data to show the functionality
 - using open source data set created by the author
+- o1- preview model for manufacturing production planning
 
 ## Step 1: Data Preparation
 
