@@ -31,6 +31,12 @@ pip install -U streamlit
 pip install -U python-docx
 ```
 
+- playwright installation is needed for the web surfer
+
+```
+playwright install --with-deps chromium
+```
+
 - import the required libraries
 
 ```python
