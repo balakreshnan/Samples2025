@@ -559,6 +559,12 @@
 }
 ```
 
+- here is the question asked
+
+```
+Create a brand new gen ai application using video analytics?
+```
+
 - Now run and output the results.
 
 ```
