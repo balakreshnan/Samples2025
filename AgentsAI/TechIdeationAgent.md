@@ -567,6 +567,12 @@ Create a brand new gen ai application using video analytics?
 
 - Now run and output the results.
 
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AgentsAI/images/softideationagent-3.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AgentsAI/images/softideationagent-4.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AgentsAI/images/softideationagent-5.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AgentsAI/images/softideationagent-6.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AgentsAI/images/softideationagent-7.jpg 'RagChat')
+
 ```
 Answer:
 FeasibilityAnalystAgent
