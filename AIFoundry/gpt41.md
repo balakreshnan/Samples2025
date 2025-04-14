@@ -18,6 +18,7 @@
 
 ## Code
 
+- Go to Azure AI Foundry, deploy the model from Model catalog.
 - Set the environment variable for Azure Open AI 4.1 model
 - Make sure Azure open ai endpoint points to Azure AI Foundry URL
 
