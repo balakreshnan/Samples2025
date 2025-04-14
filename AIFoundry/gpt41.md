@@ -99,15 +99,15 @@ Sure! To build a web app that uploads an image and analyzes it using Azure OpenA
 - Your endpoint, API key, and deployment name.
 - Install **requests** and **streamlit**:
 
-```bash
+bash
 pip install streamlit requests
-```
+
 
 ## Python Code
 
 Create a file named `app.py`:
 
-```python
+python
 import streamlit as st
 import requests
 import base64
@@ -173,16 +173,16 @@ if uploaded_file is not None:
                 st.write(answer)
             else:
                 st.error(f"Error: {response.status_code} {response.text}")
-```
+
 
 ## Instructions
 
 1. Replace `<YOUR-RESOURCE-NAME>`, `<YOUR-AZURE-OPENAI-KEY>`, and `<YOUR-DEPLOYMENT-NAME>` with your Azure details.
 2. Run the app:
 
-```bash
+
 streamlit run app.py
-```
+
 
 3. Upload an image and click **Analyze Image**.
 
