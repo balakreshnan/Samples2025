@@ -1,4 +1,4 @@
-# Azure Open AI 4.1 models in Azure AI Foundry
+# Azure Open AI o4-mini models in Azure AI Foundry
 
 ## Introduction
 
