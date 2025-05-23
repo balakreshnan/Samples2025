@@ -1,8 +1,8 @@
-# Fine tuning AOAIFineTuning gpt4.1-mini
+# Fine tuning AOAIFineTuning gpt4o-mini
 
 ## Introduction
 
-- Show the process of fine-tuning AOAIFineTuning gpt4.1-mini
+- Show the process of fine-tuning AOAIFineTuning gpt4o-mini
 - AOAI fine tuning is a process of training a pre-trained model on a specific dataset to improve its performance on a specific task.
 - using the sample data provided by documentation - https://learn.microsoft.com/en-us/azure/ai-services/openai/tutorials/fine-tune?tabs=command-line
 
@@ -10,7 +10,7 @@
 
 - Azure subscription
 - Azure AI foundry
-- Deploy gpt 4.1-mini model
+- Deploy gpt 4o-mini model
 - Pick the region EastUS2
 - Visual Studio Code
 - python 3.13 or later
