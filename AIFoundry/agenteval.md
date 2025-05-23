@@ -181,6 +181,8 @@ def aisearch_process_agent(query: str) -> str:
 - Save the output data in a file
 - The file name is evaluation_input_data.jsonl
 - Now we write the evaluation code
+- Check the converter code to save the evaluation data. This is important to save the output in correct format
+- Evaluation data is when agent is run and the output is saved in a file
 
 ```
 def agenteval(query: str) -> str:
