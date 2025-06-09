@@ -953,4 +953,5 @@ python app.py
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/agenticaifoundryagents-17.jpg 'RagChat')
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/agenticaifoundryagents-18.jpg 'RagChat')
 
-- Done 
+- Done
+- This code provides a comprehensive example of how to create, evaluate, and manage AI agents using Azure AI Foundry. It includes functionalities for red teaming, evaluation, and connected agents, demonstrating the capabilities of Azure's AI services in building responsible and effective AI solutions.
