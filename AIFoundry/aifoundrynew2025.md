@@ -1,4 +1,4 @@
-# New Azure AI Foundry Resource - Evaluation. RedTeam, Agent Evaluation
+# New Azure AI Foundry Resource - Evaluation, RedTeam, Agent Evaluation
 
 ## Azure AI Foundry - Evaluation, Red Team, Agent Evaluation as part of GenAIOps and Development
 
