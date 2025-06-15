@@ -3,6 +3,10 @@
 ## Introduction
 
 This document outlines the best practices for integrating humanoid technology into human environments, focusing on safety, efficiency, and user experience. The goal is to ensure that humanoid robots can operate seamlessly alongside humans in various settings, including workplaces, homes, and public spaces.
+It's also referenced as Physical AI, which is the integration of AI with physical robots or humanoids to enhance their capabilities and interactions with the environment. Here the focus is on how humanoids can be effectively managed and utilized within an enterprise context, ensuring they operate safely and efficiently while providing value to human users.
+For automation scenario, Robots, cobots, automonous robots should also be considered.
+These are my thoughts on future humanoid best practices, for internal company and also commercial business applications.
+There might be new business models, new revenue streams, and new ways of working that emerge as humanoid technology evolves.
 
 ## Architecture Overview
 
