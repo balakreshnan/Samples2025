@@ -1,4 +1,4 @@
-# Enterprise Humanoid to Human Technology Best Practices Details
+# Enterprise Humanoid to Human Technology Best Practices Details (Physical AI)
 
 ## Introduction
 
