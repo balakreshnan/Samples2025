@@ -29,6 +29,24 @@ openai
 - The codes creates a MCP tool that can be used to call the Azure AI Foundry Agent.
 - code uses agent.py to call the agent and return the result.
 
+- here is the host.json file for the Azure Functions project:
+
+```json
+"extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
+    "version": "[4.*, 5.0.0)"
+  },
+  "extensions": {
+    "mcp": {
+      "instructions": "MCP Foundry Agent REST API",
+      "serverName": "aiagentmcp",
+      "serverVersion": "2.0.0"
+    }
+  }
+```
+
+- Here is the code for the agent.py file:
+
 ```
 import asyncio
 from datetime import datetime
