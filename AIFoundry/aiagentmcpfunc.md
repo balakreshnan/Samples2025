@@ -1,5 +1,13 @@
 # Enabling Azure AI Agent as MCP using Azure Functions
 
+## Introduction
+
+- idea here is to show case how to create a azure ai foundry agents and expose as MCP using azure functions
+- Then call the MCP remote function using open ai responses client using remote MCP server.
+- This feature is in preview and subject to change
+- Here is the function repo — [balakreshnan/mcpfoundryagentsrestapi](https://github.com/balakreshnan/mcpfoundryagentsrestapi): Azure AI Foundry Agents as MCP server REST API
+- Client Consumption code is provided in this article.
+
 ## Prerequisites
 
 - Azure AI Functions
