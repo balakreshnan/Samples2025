@@ -1,4 +1,4 @@
-# Computer Use Agent (CUA) Browser
+# Computer Use Agent (CUA) Browser using OpenAI SDK
 
 ## Introduction
 
