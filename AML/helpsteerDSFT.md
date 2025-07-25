@@ -100,6 +100,7 @@ with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', e
 - Validation file is 5MB.
 - Need to work evaluation of the model.
 - Training tokens billed: 23,515,000
+- Each row is 635 tokens on average per row.
 
 ## Conclusion
 
