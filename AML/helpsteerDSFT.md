@@ -1,4 +1,4 @@
-# Fine tuning Azure OpenAI models with helpsteer using gpt-4.1-nano
+# Fine tuning Azure OpenAI models with helpsteer using gpt-4.1-nano - Azure AI Foundry
 
 ## Introduction
 
@@ -106,4 +106,4 @@ with open(input_path, 'r', encoding='utf-8') as infile, open(output_path, 'w', e
 - We have successfully fine-tuned a gpt-4.1-nano model using the HelpSteer dataset.
 - This model can now be used to better understand and respond to helpdesk queries.
 - You can use this model in your applications to provide better support and assistance to users.
-- Can help with industry specific use cases.
+- Can help with industry specific use cases. 
