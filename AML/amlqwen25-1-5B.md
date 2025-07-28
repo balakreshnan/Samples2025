@@ -260,7 +260,7 @@ tokenizer.save_pretrained("./sftqwen_finetuned_model_1-5BHS/final")
 print("Model saved.")
 ```
 
-![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/amlqwen2-5-1B-2.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/amlqwen2-5-1B-4.jpg 'RagChat')
 
 - Save the model
 - Evaluate the model
@@ -271,7 +271,7 @@ eval_results = trainer.evaluate()
 print(f"Validation Loss: {eval_results['eval_loss']}")
 ```
 
-![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/amlqwen2-5-1B-4.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/amlqwen2-5-1B-3.jpg 'RagChat')
 
 - Upload the model to Hugging Face
 
