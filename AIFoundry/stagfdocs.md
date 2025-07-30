@@ -235,7 +235,7 @@ def get_agf_docs(query: str) -> str:
             - For search APIs: Extract actual search parameters like field_to_search, top_search, k, semantic_configuration
             - For operations APIs: Extract actual parameters like cosmos_db_url, cosmos_db_name, days_to_analyze
             - Include actual auth_type values: "managed-identity" and "client-credentials"
-            - Reference real endpoint paths: /api/agfhub_searchintegration_af and /api/agfhub_operations_af
+            - Reference real endpoint paths: /api/agfhub_searchintegration_af and /api/agfhub_operations_af, /api/agfhub_llm_af, /api/agfhub_dataintegrations_af, /api/agfhub_agents_af
             - Use actual request_type values found in the collection
 
             Remember: This collection has real API specifications for AGF Hub functions - extract the exact data, not generic examples.""",  # Instructions for the agent
@@ -257,7 +257,8 @@ def get_agf_docs(query: str) -> str:
 
         🏗️ COLLECTION STRUCTURE:
         - Collection: "HUB_FUNCTIONS_COLLECTIONS" 
-        - Folders: "AGFHub_SearchIntegration_AF", "AGFHub_Operations_AF"
+        - Folders: "AGFHub_SearchIntegration_AF", "AGFHub_Operations_AF", "AGFHub_LLM_AF", "AGFHub_DataIntegrations_AF", "AGFHub_Agents_AF"
+        - API Collections: "AGFHub_SearchIntegration_AF", "AGFHub_Operations_AF", "AGFHub_LLM_AF", "AGFHub_DataIntegrations_AF", "AGFHub_Agents_AF"
         - Real endpoints like "search-hybrid-semantic-filter-cognitive-search", "fetch-observability-kpis"
 
         📋 EXTRACT REAL API DETAILS:
