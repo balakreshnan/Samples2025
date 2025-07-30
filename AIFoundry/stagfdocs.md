@@ -17,6 +17,36 @@
 - I am using File agent to read the JSON postman file which has API specifications.
 - Goal is to create a chat bot that can answer questions about AGF API documentation.
 
+## Requirements and environment setup
+
+- Here are the contents of the `requirements.txt` file:
+
+```
+azure-ai-projects
+azure-ai-agents
+azure-ai-evaluation
+azure-ai-evaluation[redteam]
+azure-ai-inference
+azure-ai-inference[opentelemetry]
+streamlit
+openai
+uv
+python-dotenv
+opentelemetry-sdk
+```
+
+- Here is what need for the environment setup:
+- Create a `.env` file with the following content:
+
+```
+AZURE_OPENAI_ENDPOINT=<your-azure-openai-endpoint>
+AZURE_OPENAI_API_KEY=<your-azure-openai-api-key>
+PROJECT_ENDPOINT=<your-project-endpoint>
+AZURE_OPENAI_DEPLOYMENT=<your-azure-openai-deployment>
+```
+
+- Replace `<your-azure-openai-endpoint>`, `<your-azure-openai-api-key>`, `<your-project-endpoint>`, and `<your-azure-openai-deployment>` with your actual Azure OpenAI endpoint, API key, project endpoint, and deployment name.
+
 ## Code to create AGF API documentation chat bot
 
 - import libraries
