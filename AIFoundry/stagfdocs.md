@@ -24,10 +24,6 @@
 ```
 azure-ai-projects
 azure-ai-agents
-azure-ai-evaluation
-azure-ai-evaluation[redteam]
-azure-ai-inference
-azure-ai-inference[opentelemetry]
 streamlit
 openai
 uv
