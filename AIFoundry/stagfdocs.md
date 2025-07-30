@@ -120,6 +120,236 @@ project_client = AIProjectClient(
 )
 ```
 
+- here is the agent code to process the JSON file and get the answers
+
+```
+def get_agf_docs(query: str) -> str:
+    returntxt = ""
+
+    # Load the AGF documents
+    # Define the path to the file to be uploaded
+    file_path = "./agfdocs/HUB_FUNCTIONS_COLLECTIONS.postman_collection.json"
+    
+    # Check if file exists
+    if not os.path.exists(file_path):
+        return f"❌ Error: The Postman collection file '{file_path}' was not found. Please ensure the file exists at the specified location."
+    
+    # Validate it's a JSON file
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            json.load(f)
+    except json.JSONDecodeError:
+        return f"❌ Error: The file '{file_path}' is not a valid JSON file. Please check the Postman collection format."
+    except UnicodeDecodeError as e:
+        return f"❌ Error: The file '{file_path}' has encoding issues. Please save the Postman collection as UTF-8. Details: {str(e)}"
+    except Exception as e:
+        return f"❌ Error reading file: {str(e)}"
+
+    try:
+        # Upload the file
+        file = project_client.agents.files.upload_and_poll(file_path=file_path, purpose=FilePurpose.AGENTS)
+        print(f"Uploaded file, file ID: {file.id}")
+
+        # Create a vector store with the uploaded file
+        vector_store = project_client.agents.vector_stores.create_and_poll(file_ids=[file.id], name="agfdocs-vectorstore")
+        print(f"Created vector store, vector store ID: {vector_store.id}")
+        
+        # Create a file search tool
+        file_search = FileSearchTool(vector_store_ids=[vector_store.id])
+
+        # Create an agent with the file search tool
+        agent = project_client.agents.create_agent(
+            model=os.environ["AZURE_OPENAI_DEPLOYMENT"],  # Model deployment name
+            name="agfdocs-agent",  # Name of the agent
+            instructions="""You are an API documentation specialist that extracts EXACT technical specifications from the HUB_FUNCTIONS_COLLECTIONS Postman collection JSON file. 
+
+            CRITICAL RULES - Extract Real Data Only:
+            1. ONLY use the EXACT data from the HUB_FUNCTIONS_COLLECTIONS.postman_collection.json file
+            2. DO NOT create generic examples - use the actual request bodies, headers, and parameters
+            3. Extract real field names, values, and structures as they appear in the JSON
+            4. Reference the actual folder names like "AGFHub_SearchIntegration_AF", "AGFHub_Operations_AF"
+            5. Use the actual endpoint names like "search-hybrid-semantic-filter-cognitive-search", "fetch-observability-kpis"
+            6. Quote the exact request bodies with real parameter names and values
+
+            REAL COLLECTION STRUCTURE - Extract from actual JSON:
+            The collection contains these actual folders and endpoints:
+            - AGFHub_SearchIntegration_AF folder with search endpoints
+            - AGFHub_Operations_AF folder with operations endpoints
+            - AGFHub_LLM_AF api for LLM tasks with many operation
+            - AGFHub_DataIntegrations_AF api for all data engineering tasks, with many operations.
+            - AGFHub_Agents_AF api for all agentic tasks with different agents specific to tasks.
+            - Each has specific request_type values, parameters, and configurations
+
+            EXTRACT EXACT SPECIFICATIONS:
+            
+            ## 📋 API Specification (Real Data)
+            - **Collection Name:** HUB_FUNCTIONS_COLLECTIONS (from info.name)
+            - **Endpoint:** [exact URL like {{base_url}}/api/agfhub_searchintegration_af]
+            - **Method:** [actual HTTP method from request.method]
+            - **API Name:** [exact name like "search-hybrid-semantic-filter-cognitive-search"]
+            - **Folder:** [actual folder name like "AGFHub_SearchIntegration_AF"]
+
+            ## 🔧 Real Parameters (from JSON request.body.raw)
+            Extract actual parameters like:
+            - **application_id:** "{{application_id}}" (actual variable)
+            - **request_type:** [exact values like "search-hybrid-semantic-filter-cognitive-search"]
+            - **index_name:** [actual parameter names and values]
+            - **prompt:** [actual structure like arrays []]
+            - **auth_type:** [actual values like "managed-identity", "client-credentials"]
+
+            ## 🔐 Real Authentication (from JSON)
+            - **Header Auth:** x-functions-key: "{{base_url_code}}" (actual header)
+            - **Body Auth:** auth_type field with actual values
+            - **Token Field:** "token": "" (actual field in request body)
+
+            ## 📥 Real Request Structure (from request.body.raw)
+            Extract the actual JSON structure, for example:
+            ```json
+            {
+                "application_id": "{{application_id}}",
+                "request_type": "search-hybrid-semantic-filter-cognitive-search",
+                "index_name": "index_name",
+                "prompt": [],
+                "field_to_search": "chunk_vector",
+                "top_search": 5,
+                "k": 10,
+                "auth_type": "managed-identity"
+            }
+            ```
+
+            ## 📤 Real Headers (from request.header[])
+            - **Content-Type:** "application/json" (actual header)
+            - **x-functions-key:** "{{base_url_code}}" (actual auth header)
+
+            ## 💡 Real Examples (from JSON)
+            - **Base URL:** {{base_url}} (actual variable)
+            - **Variables Used:** {{application_id}}, {{base_url_code}}, {{cosmos_db_url}}
+            - **Request Types:** List actual request_type values from the collection
+
+            ## ⚙️ Real Configuration (from collection)
+            - **Collection ID:** 313ad8eb-10ca-4189-a637-b4ef67004867
+            - **Schema:** https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+            - **Variables:** Extract actual {{variable}} references used in URLs and bodies
+
+            SPECIFIC INSTRUCTIONS:
+            - For search APIs: Extract actual search parameters like field_to_search, top_search, k, semantic_configuration
+            - For operations APIs: Extract actual parameters like cosmos_db_url, cosmos_db_name, days_to_analyze
+            - Include actual auth_type values: "managed-identity" and "client-credentials"
+            - Reference real endpoint paths: /api/agfhub_searchintegration_af and /api/agfhub_operations_af
+            - Use actual request_type values found in the collection
+
+            Remember: This collection has real API specifications for AGF Hub functions - extract the exact data, not generic examples.""",  # Instructions for the agent
+            tools=file_search.definitions,  # Tools available to the agent
+            tool_resources=file_search.resources,  # Resources for the tools
+        )
+        print(f"Created agent, ID: {agent.id}")
+        
+        # Create a thread
+        thread = project_client.agents.threads.create()
+        print(f"Created thread, ID: {thread.id}")
+
+        # Send a message to the thread
+        enhanced_query = f"""
+        Analyze the HUB_FUNCTIONS_COLLECTIONS Postman collection and extract EXACT specifications for: {query}
+
+        EXTRACT FROM ACTUAL COLLECTION DATA:
+        This collection contains real AGF Hub API endpoints:
+
+        🏗️ COLLECTION STRUCTURE:
+        - Collection: "HUB_FUNCTIONS_COLLECTIONS" 
+        - Folders: "AGFHub_SearchIntegration_AF", "AGFHub_Operations_AF"
+        - Real endpoints like "search-hybrid-semantic-filter-cognitive-search", "fetch-observability-kpis"
+
+        📋 EXTRACT REAL API DETAILS:
+        - Base URLs: {{base_url}}/api/agfhub_searchintegration_af, {{base_url}}/api/agfhub_operations_af
+        - HTTP Method: POST (actual method used)
+        - Headers: Content-Type: application/json, x-functions-key: {{base_url_code}}
+
+        🔧 EXTRACT ACTUAL PARAMETERS:
+        From real request bodies like:
+        - application_id: "{{application_id}}"
+        - request_type: "search-hybrid-semantic-filter-cognitive-search", "fetch-observability-kpis", etc.
+        - index_name, prompt, field_to_search, top_search, k values
+        - cosmos_db_url, cosmos_db_credential, cosmos_db_name
+        - auth_type: "managed-identity" or "client-credentials"
+
+        🔐 EXTRACT REAL AUTHENTICATION:
+        - Header authentication: x-functions-key with {{base_url_code}}
+        - Body authentication: auth_type field with actual values
+        - Token field: "token": "" in request bodies
+
+        � EXTRACT ACTUAL REQUEST BODIES:
+        Quote the real JSON structures from the collection, such as search parameters, database configurations, evaluation parameters.
+
+        💡 EXTRACT REAL VARIABLES:
+        - {{base_url}} - base URL variable
+        - {{base_url_code}} - function key variable  
+        - {{application_id}} - application identifier
+        - {{cosmos_db_url}}, {{cosmos_db_credential}} - database variables
+
+        Question: {query}
+
+        Provide the EXACT specifications from the HUB_FUNCTIONS_COLLECTIONS - use the real folder names, endpoint names, parameter names, and values found in the actual JSON file.
+        """
+        
+        message = project_client.agents.messages.create(
+            thread_id=thread.id,
+            role="user",
+            content=enhanced_query,  # Enhanced message content that emphasizes file-only responses
+        )
+        print(f"Created message, ID: {message['id']}")
+        
+        # Create and process an agent run in the thread
+        run = project_client.agents.runs.create_and_process(thread_id=thread.id, agent_id=agent.id)
+        print(f"Run finished with status: {run.status}")
+
+        if run.status == "failed":
+            print(f"Run failed: {run.last_error}")
+            return f"❌ Analysis failed: {run.last_error}"
+
+        # Fetch and log all messages from the thread
+        messages = project_client.agents.messages.list(thread_id=thread.id)
+        file_name = os.path.split(file_path)[-1]
+        for msg in messages:
+            if msg.role == "assistant" and msg.text_messages:
+                last_text = msg.text_messages[-1].text.value
+                
+                # Process citations and annotations
+                for annotation in msg.text_messages[-1].text.annotations:
+                    citation = (
+                        file_name if annotation.file_citation.file_id == file.id else annotation.file_citation.file_id
+                    )
+                    last_text = last_text.replace(annotation.text, f" [{citation}]")
+                
+                # Add source citation at the end of the response
+                citation_footer = f"\n\n---\n📁 **Source:** {file_name}\n📊 **Analysis Method:** Azure AI Document Intelligence\n🕒 **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+                last_text = last_text + citation_footer
+                
+                returntxt = last_text
+                print(f"{msg.role}: {last_text}")
+                break
+
+    except Exception as e:
+        return f"❌ Error processing request: {str(e)}"
+    
+    finally:
+        # Cleanup resources
+        try:
+            if 'vector_store' in locals():
+                project_client.agents.vector_stores.delete(vector_store.id)
+                print("Deleted vector store")
+            if 'file' in locals():
+                project_client.agents.files.delete(file_id=file.id)
+                print("Deleted file")
+            if 'agent' in locals():
+                project_client.agents.delete_agent(agent.id)
+                print("Deleted agent")
+        except Exception as cleanup_error:
+            print(f"Cleanup warning: {cleanup_error}")
+
+    return returntxt if returntxt else "No response received from the API documentation analysis."
+```
+
 - Now the Main streamlit app for UI and interaction
 - Also manage conversation history and display the chat messages
 
