@@ -1,4 +1,4 @@
-# OpenAI 20B Model Fine Tuning on Azure ML
+# OpenAI opens-source 20B Model Fine Tuning on Azure ML
 
 ## Pre-requisites
 
