@@ -123,7 +123,14 @@ def ai_default_agent(query: str) -> str:
         name="functest-agent",  # Name of the agent
         instructions="You are a helpful agent, use the tools to answer.",  # Instructions for the agent
         # tools=code_interpreter.definitions,  # Attach the tool
-        tools=functions.definitions,
+        tools=[
+            {
+                "type": "mcp",
+                "server_label": "aiagentmcp",
+                "server_url": os.getenv("MCP_FUNCTION_URL"),
+                "require_approval": "never"
+            },
+        ],
     )
     print(f"Created agent, ID: {agent.id}")
 
