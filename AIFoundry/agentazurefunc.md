@@ -425,5 +425,25 @@ python main.py
 ```
 
 - check the output
+
+```
+Created agent, agent ID: asst_xxxxxxxxxxxxxxx
+Created agent, ID: asst_xxxxxxxxxxxxxxxxxxxxxxx
+Created thread, ID: thread_xxxxxxxxxxxxxxxxxxxx
+Created message, ID: msg_xxxxxxxxxxxxxxxx
+Run completed with status: RunStatus.COMPLETED
+Step step_ucNSPveoS9yaPqPcIQh2eGl6 status: completed
+
+Step step_V8qVyFwZAVpA7rSKjdR80ViJ status: completed
+  Tool calls:
+    Tool Call ID: call_xxxxxxxxxxxxxxxx
+    Type: connected_agent
+    Connected Input(Name of Agent): AzureFunctionAgentFoo
+    Connected Output: Today's weather in New York City is typically in the mid-70s °F (around 24°C) in June, with partly cloudy skies and a chance of light showers. For real-time, detailed information, please check a weather app or website like Weather.com. Let me know if you want a more specific weather forecast!
+
+Role: MessageRole.AGENT, Content: [{'type': 'text', 'text': {'value': "Today's weather in New York City is typically in the mid-70s °F (around 24°C) during June, with partly cloudy skies and a chance of light showers. For detailed and real-time weather updates, you can check reliable sources such as Weather.com or a local weather app. Let me know if you want a more specific or detailed weather forecast!【message_idx:search_idx†source】", 'annotations': []}}]
+Response: Source: Today's weather in New York City is typically in the mid-70s °F (around 24°C) during June, with partly cloudy skies and a chance of light showers. For detailed and real-time weather updates, you can check reliable sources such as Weather.com or a local weather app. Let me know if you want a more specific or detailed weather forecast!【message_idx:search_idx†source】
+```
+
 - verify the response format
 - Check for Azure function response.
