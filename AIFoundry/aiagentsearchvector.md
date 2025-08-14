@@ -1,4 +1,4 @@
-# Azure AI Foundry Agent - Azure AI Search Tool using Vector Search
+# Azure AI Foundry Agent - Azure AI Search Tool using Vector Semantic Search
 
 ## Introduction
 
