@@ -21,16 +21,16 @@
 - Go to Simulators
 - Then select New simulators
   
-![info](https://github.com/balakreshnan/Samples2025/blob/main/composable/images/simulation-3.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/composabl/images/simulation-3.jpg 'RagChat')
 
 - Select upload csv file
 
-![info](https://github.com/balakreshnan/Samples2025/blob/main/composable/images/simulation-4.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/composabl/images/simulation-4.jpg 'RagChat')
 
 - Follow the screen for configuration, select which ones are sensors and actions
 - Then finalize and submit the simulation
 - Go to Dashboard and simulators and should see the new simulator with status.
 
-![info](https://github.com/balakreshnan/Samples2025/blob/main/composable/images/simulation-1.jpg 'RagChat')
+![info](https://github.com/balakreshnan/Samples2025/blob/main/composabl/images/simulation-1.jpg 'RagChat')
 
 - Wait for simulation to complete.
