@@ -736,6 +736,10 @@ if __name__ == "__main__":
 
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/adfpipe-1.jpg 'RagChat')
 
+- check tools output
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/adfpipe-9.jpg 'RagChat')
+
 - try more prompts
 
 ## Conclusion
