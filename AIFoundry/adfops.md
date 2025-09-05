@@ -1,4 +1,4 @@
-# Azure Data Factory Operations (ADF Ops)
+# Azure Data Factory Operations using Azure AI Foundry Agents (ADF Ops)
 
 ## Introduction
 
