@@ -24,6 +24,12 @@
 - I won't cover how to create index and agent in this document
 - We will focus on using existing agent but providing a voice interface
 
+## Demo
+
+- Here is the demo of the application
+
+[![Watch the video](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/voiceagentex-1.jpg)](https://youtube.com/shorts/zyAJrv-xzFI?feature=share)
+
 ## Code
 
 - This application is conbination of flask and html javascript
