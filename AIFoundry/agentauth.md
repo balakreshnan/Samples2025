@@ -1,4 +1,4 @@
-# Agentic AI Agent User Authorization - Which user can access which agent
+# Agentic AI Agent Role or User based access control
 
 ## Introduction
 
