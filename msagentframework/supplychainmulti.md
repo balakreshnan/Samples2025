@@ -357,3 +357,565 @@ python supplychainmulti.py
 - here is the query used in the example
   - "Create a AI Data center to handle 1GW capacity with 10MW power usage effectiveness.With 250000 GPU's."
 - Ask questions and see the output from each agent in the supply chain multi-agent system.
+- here is the output
+
+```
+supplychainmonitoragent: Certainly! Below is a **high-level architecture and design outline** for an AI data center capable of handling **1 GW (1000 MW) overall capacity**, with a **Power Usage Effectiveness (PUE) of 1.1**, accommodating **250,000 GPUs**, and actual IT load of **10 MW** (from your question, I interpret 10MW as the IT load per data hall, not total load, but will clarify both):
+
+---
+
+## 1. **Summary Table**
+
+| Attribute                  | Value              |
+|----------------------------|--------------------|
+| Total Data Center Power    | 1 GW (1000 MW)     |
+| PUE                       | 1.1                |
+| IT Load                   | 900 MW             |
+| Facility Overhead          | 100 MW             |
+| Number of GPUs             | 250,000            |
+| Typical GPU Power (NVIDIA H100) | 400 W         |
+| Total GPU Power Required   | 100 MW (GPUs only) |
+| Remaining IT Power (Servers/Storage) | 800 MW    |
+
+*(Assumption: Each GPU is ~400W load. Actual model may vary.)*
+
+## 2. **Capacity Calculation**
+
+- **GPU Load:**
+  250,000 GPUs × 400 W = **100,000,000 W = 100 MW**
+- **Non-GPU Servers & Storage:**
+  Remaining IT load = 900 MW – 100 MW = **800 MW**
+- **Facility Overhead (Cooling, Security, etc.):**
+  1000 MW × (1.1 – 1) = **100 MW**
+
+---
+
+## 3. **High-Level Data Center Layout**
+
+#### **a. Location & Site Facilities**
+- Choose location with robust grid access, renewable energy integration, water access for cooling (if needed), and robust fiber connectivity.
+- Example: Split into **10 Data Center Halls**, each with **100 MW** (~10,000 GPUs per hall).
+
+#### **b. Power Architecture**
+- **Substations:** Main substation(s) providing 1 GW.
+- **UPS System:** Tier IV or V architecture. N+2 redundancy.
+- **Power Distribution:**
+  - Distributed via switchgear → busways → PDUs.
+  - **Rack Power:** Each rack supports 10–40 kW (with advanced cooling).
+
+#### **c. Cooling Infrastructure**
+- **Liquid Cooling:** Direct-to-chip, rear-door heat exchangers, immersion cooling.
+- **Chillers/Cooling Towers:** Sufficient for extreme density.
+- **Redundant HVAC loops and thermal energy storage.**
+
+#### **d. GPU Clusters**
+- **Rack Design:**
+  - If each rack houses ~40 GPUs: 250,000 / 40 = **6,250 Racks** for GPUs.
+  - Each rack ~16 kW (for GPU alone).
+  - IT racks for storage, networking additional.
+
+#### **e. Networking**
+- **High-Bandwidth Fabric:** 400/800 Gbps Ethernet or Infiniband.
+- **Multiple Redundant Fiber Paths.**
+- **Distributed aggregation switches, core routers, SDN for AI workloads.**
+
+#### **f. Storage**
+- Petabyte-scale, NVMe flash, distributed SAN/NAS.
+- AI-optimized storage tiering.
+
+#### **g. Management & Security**
+- DCIM Software for power, thermal, asset tracking.
+- Physical security: Biometric, video, perimeter alarms.
+- Cybersecurity: Zero-trust, isolation, continuous monitoring.
+
+---
+
+## 4. **Sustainability**
+- **Power Source:** Renewable (solar/wind/hydro) mix, on-site generation, battery backup, grid agreements.
+- Advanced heat recovery for district heating.
+
+---
+
+## 5. **Reference Schematic**
+
+```
+┌───────────────────────────┐
+│   Main Substation (1GW)   │
+├─────────┬─────────────────┴┬─────────────┐
+│UPS/Generators│  Switchgear │ Cooling Plant│
+├─────────┴───┬─────┬────────┴───┬─────────┤
+│   Data Hall 1 │...│   Data Hall 10        │
+│  (10,000 GPUs) │   │  (10,000 GPUs)      │
+│   IT Racks    │   │   IT Racks           │
+│ Networking    │   │   Networking         │
+└─────┬───────────────┴───────────────┬────┘
+      │      DCIM / Security / NOC    │
+      └───────────────────────────────┘
+```
+
+---
+
+## 6. **Implementation Considerations**
+
+- **Space:** 6,250+ IT racks, plus overhead for networking/storage/aux.
+- **Phased Build:** Can be staged in ~10×100MW blocks (~⅒ scaling).
+- **Advanced Automation:** AI/ML for DC management, predictive maintenance.
+- **Regulatory Compliance:** Data privacy, cross-border data flow, safety.
+
+---
+
+## 7. **Sample Bill of Materials (BoM)**
+
+- **GPUs:** 250,000×NVIDIA H100
+- **Servers:** High-density, multi-GPU servers.
+- **Racks:** 6,250+ advanced cooling racks.
+- **Networking:** 400/800 Gbps switches, fiber cabling.
+- **UPS:** 1 GW total, N+2 config.
+- **Chillers:** Sufficient for ~100 MW thermal per hall.
+- **Management:** DCIM/Security appliances.
+- **Storage:** PB-scale NVMe arrays.
+
+---
+
+## 8. **Cost Estimate**
+- **CapEx:** $5–8 Billion USD (2024 estimate for 1GW Campus)
+- **OpEx:** $100–200 Million/year (energy, staffing, maintenance)
+
+---
+
+# **Summary Diagram**
+
+[If you upload a site sketch, I can annotate/expand or review for you.]
+
+---
+
+## **Let me know if you want a more detailed breakdown for:**
+
+- Cooling choices (liquid, immersion, rear-door HX)
+- Network architecture (leaf-spine, AI fabrics)
+- Capacity scaling (modular buildout)
+- Sustainability strategies (solar farms, battery backup)
+- Vendor comparison (NVIDIA vs AMD vs others)
+
+You can **upload a site plan** or request **schematic diagrams** for specific components!
+
+---
+
+**Would you like a detailed rack allocation plan, or expansion into operational workflows for AI workloads?**
+disruptionpredictionagent: Let's break down what it takes to design an AI data center handling **1GW (1,000MW) total capacity**, targeting **10MW power usage effectiveness per module**, with **250,000 GPUs**. Below is a conceptual blueprint covering power, GPU deployment, cooling, networking, and facility:
+
+---
+
+## 1. **Power & Capacity Planning**
+
+- **Total Capacity:** 1GW (entire campus)
+- **Module/Pod Design:** 10MW per pod for ease of control, redundancy, and modular growth (100 pods for 1GW).
+- **Power Usage Effectiveness (PUE):** Aim for industry-leading PUE (e.g., 1.1), implying 900MW for IT, 100MW for cooling, lighting, etc.
+
+---
+
+## 2. **GPU Deployment**
+
+- **Total GPUs:** 250,000 units
+- **Typical GPU Power:** Modern AI GPUs (NVIDIA H100, MI300X) ≈ 400W each
+- **Total GPU Power Load:** 250,000 × 0.4kW = **100MW**
+- **Racks Needed:** Each rack can host 40 GPUs (@ 16kW/rack with liquid cooling)
+  - 250,000 / 40 = 6,250 racks
+- **Modularity:** Distribute GPUs across the 10MW modules (2,500 GPUs per module)
+
+---
+
+## 3. **Data Center Facility**
+
+### **a. Floorplan & Infrastructure**
+- **Power:** Each 10MW pod has dedicated substation, generators, switchgear, UPS
+- **Cooling:** 
+  - Direct-to-chip liquid cooling, rear-door chillers, or full immersion cooling
+  - Redundant chilled water loops and heat exchangers
+- **Space:** 
+  - Each pod: ~250 racks (with GPU and supporting servers)
+  - Total facility floor area: Estimated 250,000 – 400,000 sqft
+
+### **b. Networking**
+- **Interconnects:** High-speed fabric (Infiniband, 400/800Gbps Ethernet)
+- **Core Routers & Switches:** Redundant, with multiple uplinks to external IXPs/transit
+- **Physical Paths:** Fiber and copper, per pod and cross-campus
+
+### **c. Storage and Compute**
+- **NVMe Flash Storage:** Petascale arrays for training datasets, distributed in pods
+- **Clustered AI Servers:** Multi-GPU per node, with supporting CPUs for orchestration
+
+---
+
+## 4. **Energy Source & Sustainability**
+
+- **Grid Connection:** Robust 1GW feed, with on-site transformers and switchgear
+- **Backup:** N+2 redundancy, diesel/gas generators, battery arrays
+- **Renewables:** Solar/wind integration, in line with green targets
+
+---
+
+## 5. **Schematic Structure**
+
+```
+AI DATA CENTER CAMPUS (1GW)
+
+┌────────────Campus────────────┐
+│ 100 x 10MW Data Center Pods  │
+│ (each pod: 2,500 GPUs, racks)│
+│ ---------------------------- │
+│ Power (substation, UPS)      │
+│ Cooling (liquid/immersion)   │
+│ Networking (fiber fabric)    │
+│ Storage (flash arrays)       │
+│ Management/Security          │
+└──────────────────────────────┘
+```
+
+---
+
+## 6. **High-Level Bill of Materials**
+
+- **250,000 x AI GPUs**
+- **6,250 x High-density racks (liquid cooled)**
+- **Network switches/routers (>=400Gbps per rack)**
+- **Power switchgear, UPS, backup generators**
+- **Chillers, liquid cooling infrastructure**
+- **Security (physical/cyber), DCIM management software**
+- **Onsite/adjacent renewable power generation (as required)**
+
+---
+
+## 7. **Risk & Mitigation**
+
+- **Risk:** Power/cooling failure  
+   **Mitigation:** N+2 redundancy, modular isolation, predictive maintenance
+- **Risk:** Network congestion  
+   **Mitigation:** High-density mesh, redundant uplinks, AI-orchestrated traffic
+- **Risk:** Fire/flood  
+   **Mitigation:** VESDA smoke detectors, sealed immersion, advanced fire suppression
+- **Risk:** Capacity oversubscription
+   **Mitigation:** Dynamic load allocation, hot/cold aisle containment, phased expansion
+
+---
+
+## 8. **Scalability & Expansion**
+
+- Design in 10MW modular pods for easy scaling up/down
+- Supports future GPU technologies (denser, higher-wattage, etc)
+- Upgradeable networking and cooling infrastructure
+
+---
+
+## 9. **Summary**
+
+This campus will be one of the world’s largest, designed for high-density AI workloads and optimized for sustainability and reliability. 
+
+If you share the desired site plan, I'll help with the schematic illustration!  
+Would you like a **3D block diagram, layout drawing, or detailed module design** next? Please specify!
+scenariosimulationagent: Here is an outline for a high-capacity AI data center designed for 1GW total power, targeting 10MW PUE segments, hosting 250,000 GPUs:
+
+---
+
+### 1. **Power and GPU Deployment Calculation**
+
+- **Total Power Budget (1GW):** 1,000MW (entire data center campus)
+- **PUE Target:** Let's assume 1.1 (modern AI data centers, aggressive but feasible)
+  - **IT (Compute) Power:** 1,000MW / 1.1 ≈ **910MW**
+  - **Facility Power (cooling, uninterruptible power supply, etc.):** ≈ 90MW
+
+- **GPU Count:** 250,000
+- **Typical GPU Power Consumption:** ~400W per GPU (NVIDIA H100-class)
+  - **Total GPU Power Draw:** 250,000 x 0.4kW = **100MW**
+  - **Total Compute Power (incl. CPUs, storage, etc):** Balance of ~810MW
+
+- **Rack Calculation (if 40 GPUs/rack):** 250,000 / 40 = **6,250 racks**
+- **Rack Power Density:** 40 GPUs x 400W = **16kW per rack** (will need liquid/immersion cooling)
+
+---
+
+### 2. **Data Center Architecture**
+
+**a. Modular "Pod" Design:**
+- Divide facility into 10MW segments (pods), ~100 pods for full scale.
+- Each pod: ~2,500 GPUs (~63 racks), independent power/cooling/network zones.
+
+**b. Power Infrastructure:**
+- On-site substation(s) supporting high voltage grid connection, ideally green/renewable energy as much as possible.
+- N+2 UPS and generator redundancy.
+- Busways and rack power distribution for high-density compute.
+- Independent metering per pod for capacity and cost management.
+
+**c. Cooling:**
+- Liquid cooling for racks (direct-to-chip, rear-door heat exchangers, or immersion cooling).
+- Redundant chillers, cooling towers, heat exchange loops.
+- Scalable to high rack densities (16kW+ per rack).
+
+**d. Networking:**
+- Fabric switches with 400/800Gbps Ethernet or InfiniBand.
+- Highly redundant edge/core, multiple carriers for wide-area connectivity.
+- Air-gapped and segmented by pod for workload isolation.
+
+**e. Storage:**
+- Petabyte-scale NVMe flash arrays per pod for training datasets.
+- Tiered cold storage locations (lower power draw, densified at campus perimeter).
+
+---
+
+### 3. **Environmental and Security**
+
+- Onsite battery arrays and diesel/natural gas backup for blackouts.
+- Smart fire suppression (VESDA), air monitoring, water leak sensors.
+- Advanced cyber defense (physical separation for sensitive AI workloads).
+- Sustainable building (rainwater recovery, solar/wind integration, heat re-use).
+
+---
+
+### 4. **Sample Floor Plan Diagram**
+
+```
+CAMPUS SUBSTATION
+       │
+       ├── Pod 1 (10MW) ──[2500 GPU]
+       ├── Pod 2 (10MW) ──[2500 GPU]
+       └── ...
+       └── Pod 100 (10MW)─[2500 GPU]
+       │
+    DCIM / Network Core / Security Hub
+```
+
+---
+
+### 5. **Sample Build Materials**
+
+- **250,000 GPUs** (e.g., NVIDIA H100 or AMD Instinct)
+- **6,250 Liquid-cooled racks**
+- **100 Modular cooling units/plant**
+- **100 UPS/generator systems**
+- **100 Pod network cores (400-800Gbps)**
+- **DCIM software and sensors**
+- **Physical security infrastructure**
+
+---
+
+### 6. **Scalability & Management**
+
+- Scalable by pod/module: easy phased ramp-up as demand grows.
+- AI-enabled data center management (DCIM): predictive maintenance, load balancing, cooling automation.
+
+---
+
+### 7. **Cost Estimate (2024, Approximate)**
+
+- CapEx (campus): **$6-10B** (site, GPUs, construction, cooling, power, network)
+- OpEx/year: **$100-250M** (power, staff, maintenance)
+
+---
+
+## **Summary**
+
+This approach delivers extreme scale and density (1GW, 250k GPUs), with modular isolation, optimal power/cooling, future scalability, and high network transport. If you have site drawings, I can help with more detailed planning (zoning, load, flow). Let me know if you want further breakdowns (rack layouts, cooling systems, compute/storage mix, cost curve, etc.).
+inventoryoptimizationagent: Here's a high-level design outline for an **AI Data Center with 1GW (1,000MW) total power**, targeting **10MW per module** and hosting **250,000 GPUs**.
+
+---
+
+## 1. **Requirements Recap**
+
+- **Total Data Center Facility Power:** 1,000MW
+- **PUE Target:** 1.1 or lower (modern best-practice)
+- **Number of GPUs:** 250,000
+  - Typical GPU (NVIDIA H100): 400W load
+  - **Total GPU Power Draw:** 250,000 × 0.4kW = **100MW** for GPUs
+- **Modularization:** 10MW modules (pods/halls) for manageability and resilience
+
+---
+
+## 2. **Facility Design**
+
+**A. Modular Pod/Block Layout**
+- 1,000MW / 10MW per module = **100 modules/pods**
+- Each pod contains 2,500 GPUs (2,500 × 0.4kW = 1MW for GPUs alone)
+- Remaining 9MW per pod for CPUs, storage, switches, and other IT/infra
+
+**B. Power Distribution**
+- Redundant substations and switchgear
+- N+2 UPS & GenSets per module
+- Busways delivering 10MW to each pod
+- Metering at pod and rack level for transparency and optimization
+
+**C. Cooling**
+- Direct-to-chip liquid cooling or full immersion for GPU racks
+- Redundant chiller plants or free-cooling with adiabatic support
+- High-density containment (hot aisle/cold aisle or liquid isolators)
+
+**D. Racking & Floor Space**
+- At 40 GPUs/rack, 2,500 GPUs/pod = **63 racks/pod** × 100 pods = **~6,300 racks**
+- Each rack ~16kW+ (requires liquid cooling, no air-cooling at this density)
+- Inter-pod space for networking, power, fire suppression, service corridors
+
+**E. Networking**
+- At least 400G–800G backbone, Infiniband or similar low-latency fabric
+- Redundant border routers per module, multiple external fiber providers
+- Multiple isolated zones for resilience
+
+**F. Storage**
+- NVMe flash/AI-optimized storage clusters per pod, aggregated at site level
+- 10+ PB capacity with expansion for AI training data
+
+---
+
+## 3. **Operations & Resilience**
+
+- **Active Racks Monitoring:** Power, temp, GPU, and cooling sensor telemetry; automated or AI-driven load shifting
+- **Security:** Physical separation, 2FA/Biometrics, CCTV, intrusion detection, mantraps
+- **Fire Suppression:** VESDA, inert-gas or clean-agent, dry-pipe water system
+- **Sustainability:** Green grid, on-site battery/solar/wind as adjunct, heat re-use systems
+
+---
+
+## 4. **Scalability & Modularity**
+
+- Pods can be staged/commissioned as demand grows
+- Spare modules for redundancy, N+2 topology for major systems
+- Zoning allows for failure isolation, quick swaps, and expansion
+
+---
+
+## 5. **Sample Block Diagram**
+
+```
+[GRID/Utility]-->[Substation]-->[100 x 10MW Modules]--\
+                                                    |--[Aggregate Core Network]--[Border/IXP]
+   [Chillers/Free Coolers]----/
+```
+
+Each 10MW module contains:
+- 63 GPU racks, supporting (liquid-cooled)
+- Server/network/storage racks as needed
+- Pod-level switches, KVM, sensors
+
+---
+
+## 6. **Staffing/Automation**
+
+- AI-powered DCIM system for monitoring and control
+- 24/7 NOC/SOC
+- Robotics for physical movement/maintenance (optional at huge scale)
+
+---
+
+## 7. **Estimated CapEx**
+
+- **Data center ($10M/MW):** $10B (very rough modern ballpark--location and spec dependent)
+- **GPUs (at $25k/unit):** $6.25B
+- **Networking/storage/infrastructure:** $1–3B
+
+---
+
+**This design is resilient, AI/ML and hyperscale-oriented, and maximizes performance and density.** 
+
+If you need more detail (e.g., sample rack elevations, power paths, cooling water flow, or single-pod blueprints), **let me know!**
+===== Final output =====
+Here's a high-level design outline for an **AI Data Center with 1GW (1,000MW) total power**, targeting **10MW per module** and hosting **250,000 GPUs**.
+
+---
+
+## 1. **Requirements Recap**
+
+- **Total Data Center Facility Power:** 1,000MW
+- **PUE Target:** 1.1 or lower (modern best-practice)
+- **Number of GPUs:** 250,000
+  - Typical GPU (NVIDIA H100): 400W load
+  - **Total GPU Power Draw:** 250,000 × 0.4kW = **100MW** for GPUs
+- **Modularization:** 10MW modules (pods/halls) for manageability and resilience
+
+---
+
+## 2. **Facility Design**
+
+**A. Modular Pod/Block Layout**
+- 1,000MW / 10MW per module = **100 modules/pods**
+- Each pod contains 2,500 GPUs (2,500 × 0.4kW = 1MW for GPUs alone)
+- Remaining 9MW per pod for CPUs, storage, switches, and other IT/infra
+
+**B. Power Distribution**
+- Redundant substations and switchgear
+- N+2 UPS & GenSets per module
+- Busways delivering 10MW to each pod
+- Metering at pod and rack level for transparency and optimization
+
+**C. Cooling**
+- Direct-to-chip liquid cooling or full immersion for GPU racks
+- Redundant chiller plants or free-cooling with adiabatic support
+- High-density containment (hot aisle/cold aisle or liquid isolators)
+
+**D. Racking & Floor Space**
+- At 40 GPUs/rack, 2,500 GPUs/pod = **63 racks/pod** × 100 pods = **~6,300 racks**
+- Each rack ~16kW+ (requires liquid cooling, no air-cooling at this density)
+- Inter-pod space for networking, power, fire suppression, service corridors
+
+**E. Networking**
+- At least 400G–800G backbone, Infiniband or similar low-latency fabric
+- Redundant border routers per module, multiple external fiber providers
+- Multiple isolated zones for resilience
+
+**F. Storage**
+- NVMe flash/AI-optimized storage clusters per pod, aggregated at site level
+- 10+ PB capacity with expansion for AI training data
+
+---
+
+## 3. **Operations & Resilience**
+
+- **Active Racks Monitoring:** Power, temp, GPU, and cooling sensor telemetry; automated or AI-driven load shifting
+- **Security:** Physical separation, 2FA/Biometrics, CCTV, intrusion detection, mantraps
+- **Fire Suppression:** VESDA, inert-gas or clean-agent, dry-pipe water system
+- **Sustainability:** Green grid, on-site battery/solar/wind as adjunct, heat re-use systems
+
+---
+
+## 4. **Scalability & Modularity**
+
+- Pods can be staged/commissioned as demand grows
+- Spare modules for redundancy, N+2 topology for major systems
+- Zoning allows for failure isolation, quick swaps, and expansion
+
+---
+
+## 5. **Sample Block Diagram**
+
+```
+[GRID/Utility]-->[Substation]-->[100 x 10MW Modules]--\
+                                                    |--[Aggregate Core Network]--[Border/IXP]
+   [Chillers/Free Coolers]----/
+```
+
+Each 10MW module contains:
+- 63 GPU racks, supporting (liquid-cooled)
+- Server/network/storage racks as needed
+- Pod-level switches, KVM, sensors
+
+---
+
+## 6. **Staffing/Automation**
+
+- AI-powered DCIM system for monitoring and control
+- 24/7 NOC/SOC
+- Robotics for physical movement/maintenance (optional at huge scale)
+
+---
+
+## 7. **Estimated CapEx**
+
+- **Data center ($10M/MW):** $10B (very rough modern ballpark--location and spec dependent)
+- **GPUs (at $25k/unit):** $6.25B
+- **Networking/storage/infrastructure:** $1–3B
+
+---
+
+**This design is resilient, AI/ML and hyperscale-oriented, and maximizes performance and density.**
+
+If you need more detail (e.g., sample rack elevations, power paths, cooling water flow, or single-pod blueprints), **let me know!**
+```
+
+- Done! You have successfully created a multi-agent supply chain management system using Azure OpenAI and Python. Each agent has its own responsibilities and they work together to optimize the supply chain process.
