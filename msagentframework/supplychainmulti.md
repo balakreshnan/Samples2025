@@ -16,7 +16,7 @@
 
 - Azure Subscription
 - Azure AI Foundry
-- Deploy gpt-5 chat model
+- Deploy gpt-4.1 chat model
 - python 3.13 or above
 - Install required python packages
 - We need to install Azure AI Foundry Standard agent.
