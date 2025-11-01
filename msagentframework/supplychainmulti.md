@@ -1,5 +1,7 @@
 # Microsoft Agent Framework - Supply Chain Multi-Agent Example with Azure AI Foundry integration for Agentic AI Life Cycle Management
 
+![info](https://github.com/balakreshnan/Samples2025/blob/main/msagentframework/images/SupplyChainDesigner.png 'RagChat')
+
 ## Introduction
 
 - We are going to Create a Supply Chain Multi-Agent System using Microsoft Agent Framework.
