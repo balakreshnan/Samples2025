@@ -17,7 +17,7 @@
 
 - Azure Subscription
 - Azure AI Foundry
-- Deploy gpt-4.1 chat model
+- Deploy gpt-4o chat model
 - python 3.13 or above
 - Install required python packages
 - We need to install Azure AI Foundry Standard agent.
@@ -238,47 +238,75 @@ python chipmfgrca.py
 - Sample output will include the trace ID, agent interactions, and the final report.
 
 ```
-## **ISO 9001 Root Cause Analysis (RCA) Report**
-
-**Document No.:** QMR-RCA-001  
-**Date:** [Insert Date]  
-**Process/Department:** [Insert Department Name]
-**Reported by:** [Insert Name]  
-**Reviewed by:** [Insert Auditor/Manager Name]
-
+### Root Cause Analysis (RCA) and ISO 9001 Report
 ---
+**Company Name:** XYZ Manufacturing
 
-### **1. Problem Description**  
-**ISO 9001 Clause Reference:** 10.2 – *Nonconformity and Corrective Action*  
+**Report Prepared By:** ISO Compliance Team
 
-Describe the issue clearly and factually (what happened, where, when, who identified it).  
-**Example:**  
-Customer complaints increased by 25% in Q2 due to delayed product dispatches.
+**Report Date:** April 14, 2023
 
----
+**Report Title:** Root Cause Analysis of Defects in Product Line X
 
-### **2. Containment/Immediate Action**  
-**ISO 9001 Clause Reference:** 8.7 – *Control of Nonconforming Outputs*  
+#### 1. Introduction
+XYZ Manufacturing has recently encountered a series of quality issues with its Product Line X. This report contains a comprehensive Root Cause Analysis (RCA) and actionable recommendations in adherence to ISO 9001:2015 standards to prevent recurrence of these issues, to enhance overall quality management, and to ensure customer satisfaction.
 
-List immediate corrective measures taken to stop the problem from worsening.  
-**Example:**
-- Orders were prioritized for on-time delivery.  
-- Customer communication initiated to address delays.
+#### 2. Objective
+To identify the root causes of the defects in Product Line X, and to provide corrective and preventive actions as per ISO 9001:2015 standards.
 
----
+#### 3. Data Collection & Problem Identification (ISO 9001 Clause 9.1.1)
+During the data collection phase, the following defects were recorded in Product Line X over the past 3 months:
+- **Defect Type A:** Incorrect assembly of components
+- **Defect Type B:** Malfunction of electronic parts
+- **Defect Type C:** Surface scratches on final products
 
-### **3. Root Cause Analysis (RCA)**  
-**ISO 9001 Clause Reference:** 10.2.1(b) – Determine the causes of the nonconformity  
+#### 4. Root Cause Analysis (ISO 9001 Clause 10.2.1)
+The RCA team utilized Fishbone Diagrams (Ishikawa) and the 5 Whys method to identify the underlying causes of the defects.   
 
-**Method Used:** 5 Whys / Fishbone Diagram  
+**4.1 Defect Type A - Incorrect Assembly of Components**
+- **Identified Causes:**
+  - Training gaps in assembly line employees
+  - Lack of standardized work instructions (SOPs)
+  - Inadequate supervision during the assembly process
 
-| Why # | Root Cause Question | Response |
-|-------|---------------------|-----------|
-| 1 | Why were deliveries delayed? | Insufficient manpower during peak season. |
-| 2 | Why was manpower insufficient? | Hiring plan not aligned with forecasted demand. |
-| 3 | Why was the hiring plan not aligned? | Demand forecasting inaccuracies and lack of review. |
-| 4 | Why were forecasts not reviewed? | Absence of cross-functional review meetings. |
-| 5 | Why no review meetings? | Ineffectively implemented planning procedure (QMS gap). |
+- **Root Cause:** Insufficient training and lack of standardized work instructions.
+
+**4.2 Defect Type B - Malfunction of Electronic Parts**
+- **Identified Causes:**
+  - Substandard supplier materials
+  - Improper storage conditions leading to damage
+  - Lack of incoming inspection protocol
+
+- **Root Cause:** Quality issues in parts supplied and no proper incoming inspection.
+
+**4.3 Defect Type C - Surface Scratches on Final Products**
+- **Identified Causes:**
+  - Ineffective handling and packaging procedures
+  - Use of abrasive tools during final inspections
+  - Inadequate quality checks before shipment
+
+- **Root Cause:** Inefficient handling and packaging procedures.
+
+#### 5. Corrective Actions (ISO 9001 Clause 10.2.2)
+Based on the root cause analysis, the following corrective actions are recommended:
+
+**5.1 For Defect Type A:**
+- **Action 1:** Implement comprehensive training programs for assembly line employees (ISO 9001 Clause 7.2).
+- **Action 2:** Develop and enforce detailed Standard Operating Procedures (SOPs) for assembly processes (ISO 9001 Clause 8.5.1).
+- **Action 3:** Increase supervision and introduce periodic audits to ensure adherence to SOPs (ISO 9001 Clause 9.2.2).      
+
+**5.2 For Defect Type B:**
+- **Action 1:** Establish stringent supplier quality agreements and perform regular audits of suppliers (ISO 9001 Clause 8.4.2).
+- **Action 2:** Implement a robust incoming inspection protocol for all electronic parts (ISO 9001 Clause 8.6).
+- **Action 3:** Ensure proper storage conditions for electronic parts to prevent damage (ISO 9001 Clause 7.1.4).
+
+**5.3 For Defect Type C:**
+- **Action 1:** Train employees on proper handling and packaging techniques (ISO 9001 Clause 7.3).
+- **Action 2:** Replace abrasive tools with non-abrasive inspection tools (ISO 9001 Clause 7.1.5).
+- **Action 3:** Conduct final quality inspections and implement a robust packaging quality control (ISO 9001 Clause 8.6).    
+
+#### 6. Implementation and Monitoring (ISO 9001 Clause 9.3.2)
+The recommendations outlined above will be implemented by designated teams led by the Quality Assurance Manager. The effectiveness of corrective actions will be reviewed in monthly management review meetings and audits will be conducted to ensure continuous improvement.
 ```
 
 - Now go to Azure AI Foundry portal to monitor the agents and their interactions.
@@ -289,7 +317,14 @@ List immediate corrective measures taken to stop the problem from worsening.
 - now for details of Agent interactions
 
 ![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/chipmfgrca-2.jpg 'RagChat')
-![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/chipmfgrca-3.jpg 'RagChat')
+
+- Tools execution details
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/chipmfgrca-4.jpg 'RagChat')
+
+- using gpt 4o model
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AIFoundry/images/chipmfgrca-5.jpg 'RagChat')
 
 ## Conclusion
 
