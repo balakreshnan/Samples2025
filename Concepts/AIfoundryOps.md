@@ -38,6 +38,8 @@ The AgentOps framework follows a structured, multi-stage pipeline that ensures q
 - Follow the application CICD pipeline for deployment.
 - All the meta data about the agents, their versions, configurations, and governance are stored in meta data store for future reference and auditing. Given there is privacy and security make sure the data is stored securely.
 
+## Agent Ops Lifecycle Stages
+
 ### 1. Development Phase
 
 #### Agent Creation
