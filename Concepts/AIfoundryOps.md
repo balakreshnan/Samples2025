@@ -20,6 +20,24 @@ AgentOps is a comprehensive framework for managing and orchestrating AI agents w
 
 The AgentOps framework follows a structured, multi-stage pipeline that ensures quality, security, and reliability throughout the agent lifecycle.
 
+### Flow is split into 2 main areas
+
+- Split design allows us to reuse the agents and built agent marketplace or registry.
+
+### First Phase
+
+- First is agent creation, evaluation, testing, redteaming, and responsible AI assessment, Deploy agents to production after registration and governance in Azure AI Foundry.
+- Meta data storage should be in a secure data store for future reference and auditing.
+- Agents deployments can be a separate CI/CD pipeline that can be triggered once the agents are approved for production.
+- Ability to build agent market place or registry to reuse the agents across multiple solutions.
+- When deploying make sure Red Team, Evaluation, Responsible AI assessment in batch are performed as part of deployment pipeline.
+
+### Second Phase
+
+- Second is Consuming the existing agents created in First step. Consumption includes monitoring, logging, performance optimization, maintenance, updates, compliance, and security. Also will be part of application that is consuming these agents. Tracing, threads are managed and maintained based on user conversation.
+- Follow the application CICD pipeline for deployment.
+- All the meta data about the agents, their versions, configurations, and governance are stored in meta data store for future reference and auditing. Given there is privacy and security make sure the data is stored securely.
+
 ### 1. Development Phase
 
 #### Agent Creation
@@ -257,7 +275,7 @@ The AgentOps framework follows a structured, multi-stage pipeline that ensures q
 
 - **Azure AI Studio**: Development and testing environment
 - **Azure OpenAI Service**: LLM capabilities
-- **Prompt Flow**: Agent orchestration and workflow
+- **Agent Framework**: Agent orchestration and workflow
 - **AI Search**: Knowledge retrieval and grounding
 - **Content Safety**: Guardrails and filtering
 
