@@ -37,6 +37,8 @@ The AgentOps framework follows a structured, multi-stage pipeline that ensures q
 - Second is Consuming the existing agents created in First step. Consumption includes monitoring, logging, performance optimization, maintenance, updates, compliance, and security. Also will be part of application that is consuming these agents. Tracing, threads are managed and maintained based on user conversation.
 - Follow the application CICD pipeline for deployment.
 - All the meta data about the agents, their versions, configurations, and governance are stored in meta data store for future reference and auditing. Given there is privacy and security make sure the data is stored securely.
+- Given we are using language models, it is important to use content filtering and safety mechanisms to ensure compliance and security and risk management.
+- Make sure Monitoring is also enabled for agent usage, performance, and cost optimization.
 
 ## Agent Ops Lifecycle Stages
 
