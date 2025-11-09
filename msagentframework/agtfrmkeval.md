@@ -1,10 +1,11 @@
-# Microsoft Agent Framework Evaluation using Azure AI Foundry Services
+# Microsoft Agent Framework Evaluation using Azure AI Foundry Services - Realtime Example
 
 ## Overview
 
 - This document provides an evaluation of the Microsoft Agent Framework (MAF) within the context of Azure AI Foundry services.
 - The evaluation focuses on the capabilities, integration, and performance of MAF when orchestrating AI agents for various tasks.
 - Ability to validate the agents quality and performance using Azure AI Foundry services.
+- Evaluate as the agents are consumed by the applications on every request.
 
 ## Prerequisites
 
@@ -227,7 +228,7 @@ Result: The weather in Tokyo is currently sunny with a high of 22°C.
  'task_adherence_result': 'fail',
  'task_adherence_threshold': 3}
  ```
- 
+
 - Evaluations can be local or can be run using Azure AI Foundry evaluation services.
 - This example demonstrates how to evaluate locally using Azure AI Foundry evaluation classes.
 
