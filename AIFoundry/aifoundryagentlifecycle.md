@@ -6,6 +6,9 @@
 - Define the components and services involved in the architecture.
 - Also show the development tools and processes used to build, deploy, and manage agentic AI applications.
 - Also show the knowledge creation and management aspects of the architecture.
+- Also the application architecture and end user experience aspects of the architecture.
+- Covers Data science, applicaion development and Agentic AI development lifecycle.
+- Fine tuning is out of scope for this architecture.
 
 ## Architecture
 
