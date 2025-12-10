@@ -283,13 +283,28 @@ ml_client.online_deployments.get_logs(
 - Test the endpoint with sample input data
 
 ```python
+import json
+
 payload = {"image_url": "https://ultralytics.com/images/bus.jpg"}
 
+# Write payload to a temp file
+with open("input.json", "w") as f:
+    json.dump(payload, f)
+
+# Invoke endpoint using request_file
 response = ml_client.online_endpoints.invoke(
     endpoint_name=endpoint_name,
-    request_body=payload,  # dict instead of JSON string
-    content_type="application/json"
+    deployment_name="blue",
+    request_file="input.json",   # must be a file path
 )
+
+print(response)
+```
+
+- ouptut will be like below
+
+```
+"[{\"name\":\"bus\",\"class\":5,\"confidence\":0.94015,\"box\":{\"x1\":3.83272,\"y1\":229.36424,\"x2\":796.19458,\"y2\":728.41229}},{\"name\":\"person\",\"class\":0,\"confidence\":0.88822,\"box\":{\"x1\":671.01721,\"y1\":394.83307,\"x2\":809.80975,\"y2\":878.71246}},{\"name\":\"person\",\"class\":0,\"confidence\":0.87825,\"box\":{\"x1\":47.40473,\"y1\":399.56512,\"x2\":239.30066,\"y2\":904.19501}},{\"name\":\"person\",\"class\":0,\"confidence\":0.85577,\"box\":{\"x1\":223.05899,\"y1\":408.68857,\"x2\":344.46762,\"y2\":860.43573}},{\"name\":\"person\",\"class\":0,\"confidence\":0.62192,\"box\":{\"x1\":0.02171,\"y1\":556.06854,\"x2\":68.88546,\"y2\":872.35919}}]"
 ```
 
 - Done! You have successfully deployed Yolo 11n model in Azure Machine Learning Managed Online Endpoint.
