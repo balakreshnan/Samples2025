@@ -197,11 +197,13 @@ channels:
 dependencies:
   - python=3.12
   - pip
+  - opencv
   - pip:
-    - ultralytics
-    - numpy
-    - Pillow
     - azureml-inference-server-http
+    - inference-schema[numpy-support]
+    - joblib
+    - Pillow
+    - ultralytics
     - azure-monitor-opentelemetry-exporter
 ```
 

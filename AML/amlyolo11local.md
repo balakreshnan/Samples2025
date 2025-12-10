@@ -330,6 +330,26 @@ ml_client = MLClient(
 endpoint_name = "yolo11n-object-local"
 ```
 
+- create environment file environment.yml with following content
+
+```python
+%%writefile environment.yml
+name: yolo11env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - opencv
+  - pip:
+    - azureml-inference-server-http
+    - inference-schema[numpy-support]
+    - joblib
+    - Pillow
+    - ultralytics
+    - azure-monitor-opentelemetry-exporter
+```
+
 - Deploy the model using docker container in local machine.
 
 ```python
@@ -382,6 +402,21 @@ response = ml_client.online_endpoints.invoke(
 
 # Print nicely
 print(json.dumps(response, indent=2))
+```
+
+- testing in terminal 
+
+```
+curl -X POST \
+     -H "Content-Type: application/json" \
+     -d '{"image_url": "https://ultralytics.com/images/bus.jpg"}' \
+     http://localhost:32785/score
+```
+
+- output is
+
+```
+[{\"name\":\"bus\",\"class\":5,\"confidence\":0.94015,\"box\":{\"x1\":3.83272,\"y1\":229.36423,\"x2\":796.19458,\"y2\":728.41229}},{\"name\":\"person\",\"class\":0,\"confidence\":0.88822,\"box\":{\"x1\":671.01721,\"y1\":394.83319,\"x2\":809.80975,\"y2\":878.71246}},{\"name\":\"person\",\"class\":0,\"confidence\":0.87825,\"box\":{\"x1\":47.40473,\"y1\":399.56516,\"x2\":239.30066,\"y2\":904.19501}},{\"name\":\"person\",\"class\":0,\"confidence\":0.85577,\"box\":{\"x1\":223.05899,\"y1\":408.68857,\"x2\":344.46762,\"y2\":860.43573}},{\"name\":\"person\",\"class\":0,\"confidence\":0.62192,\"box\":{\"x1\":0.02174,\"y1\":556.06854,\"x2\":68.88546,\"y2\":872.35919}}]
 ```
 
 - You should see the inference results in JSON format in the terminal.
