@@ -307,4 +307,10 @@ print(response)
 "[{\"name\":\"bus\",\"class\":5,\"confidence\":0.94015,\"box\":{\"x1\":3.83272,\"y1\":229.36424,\"x2\":796.19458,\"y2\":728.41229}},{\"name\":\"person\",\"class\":0,\"confidence\":0.88822,\"box\":{\"x1\":671.01721,\"y1\":394.83307,\"x2\":809.80975,\"y2\":878.71246}},{\"name\":\"person\",\"class\":0,\"confidence\":0.87825,\"box\":{\"x1\":47.40473,\"y1\":399.56512,\"x2\":239.30066,\"y2\":904.19501}},{\"name\":\"person\",\"class\":0,\"confidence\":0.85577,\"box\":{\"x1\":223.05899,\"y1\":408.68857,\"x2\":344.46762,\"y2\":860.43573}},{\"name\":\"person\",\"class\":0,\"confidence\":0.62192,\"box\":{\"x1\":0.02171,\"y1\":556.06854,\"x2\":68.88546,\"y2\":872.35919}}]"
 ```
 
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/yolo11nonline-1.jpg 'yolo11n Managed Online Endpoint Test Result')
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/yolo11nonline-2.jpg 'yolo11n Managed Online Endpoint Test Result')
+
+![info](https://github.com/balakreshnan/Samples2025/blob/main/AML/images/yolo11nonline-3.jpg 'yolo11n Managed Online Endpoint Test Result')
+
 - Done! You have successfully deployed Yolo 11n model in Azure Machine Learning Managed Online Endpoint.
